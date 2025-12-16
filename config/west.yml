@@ -1,14 +1,26 @@
 manifest:
-  defaults:
-    revision: v0.3
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    # Additional modules containing boards/shields/custom code can be listed here as well
-    # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
+    - name: cornix-shield
+      url-base: https://github.com/hitsmaxft
+    - name: urob
+      url-base: https://github.com/urob
+
   projects:
     - name: zmk
       remote: zmkfirmware
-      import: app/west.yml
+      revision: main         # ZMK 本体
+      import:
+        file: app/west.yml
+
+    - name: zmk-keyboard-cornix
+      remote: cornix-shield  # Cornix のボード定義
+      revision: main
+
+    - name: zmk-helpers
+      remote: urob           # 便利マクロ集
+      revision: main
+
   self:
     path: config
