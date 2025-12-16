@@ -17,4 +17,27 @@
 #     cmake-args: -DCONFIG_ZMK_STUDIO=y
 #     artifact-name: corne_left_with_studio
 #
----
+include:
+  # Cornix をドングル付きで使うとき
+  - board: cornix_dongle
+    shield: cornix_dongle_eyelash dongle_display
+    snippet: studio-rpc-usb-uart
+    artifact-name: cornix_dongle
+
+  - board: cornix_ph_left
+    # shield: cornix_indicator
+    artifact-name: cornix_left_for_dongle
+
+  # ドングルなしで普通に使うとき
+  - board: cornix_left
+    # shield: cornix_indicator
+    artifact-name: cornix_left
+
+  - board: cornix_right
+    # shield: cornix_indicator
+    artifact-name: cornix_right
+
+  # 設定リセット用
+  - board: cornix_right
+    shield: settings_reset
+    artifact-name: reset
