@@ -2,24 +2,44 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+
     - name: cornix-shield
       url-base: https://github.com/hitsmaxft
-    - name: urob
-      url-base: https://github.com/urob
+
+    # ドングル表示用の元リポジトリ（コンフリクトしてない方）
+    - name: englmaxi
+      url-base: https://github.com/englmaxi
+
+    # RGB LED ウィジェット用（使わなくても邪魔にはならない）
+    - name: caksoylar
+      url-base: https://github.com/caksoylar
 
   projects:
+    # ZMK 本体
     - name: zmk
       remote: zmkfirmware
-      revision: main         # ZMK 本体
+      revision: main
       import:
         file: app/west.yml
 
+    # Cornix キーボード定義
     - name: zmk-keyboard-cornix
-      remote: cornix-shield  # Cornix のボード定義
+      remote: cornix-shield
       revision: main
 
-    - name: zmk-helpers
-      remote: urob           # 便利マクロ集
+    # ドングルのディスプレイ用シールド（← これがないと dongle_display が見つからない）
+    - name: zmk-dongle-display
+      remote: englmaxi
+      revision: main
+
+    # （オプション）Cornix 用スクリーン関連
+    - name: zmk-dongle-screen
+      remote: cornix-shield
+      revision: main
+
+    # （オプション）RGB ウィジェット
+    - name: zmk-rgbled-widget
+      remote: caksoylar
       revision: main
 
   self:
